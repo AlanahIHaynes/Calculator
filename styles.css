@@ -29,7 +29,15 @@ body{
     border-width: 8px;
     border-color: black;
     border-radius: 8px;
+    justify-content: end;
+    align-items: center;
+    font-size: 48px;
 }
+
+.output{
+    padding: 6px;
+}
+
 
 .calculator .buttons{
     display: flex;
@@ -66,12 +74,25 @@ button{
     background-color: rgb(111, 200, 184);
     height: 120px;
     width: 125px; 
+    font-size: 32px;
+    font-weight: bold;
+    border: solid;
+    border-radius: 8px;
+    font-family: "Coda", sans-serif;
+    
+}
+
+.operations button{
+    background-color: rgb(246, 150, 65);
 }
 
 .clear-btn, .zero-btn{
     width: 375px;
 }
 
+.clear-btn{
+    background-color: rgb(77, 147, 246);
+}
 .calculator .numbers{
     display: flex;
     flex-direction: row;
