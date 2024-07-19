@@ -1,0 +1,80 @@
+/*Calculator Styling */
+body{
+    background-color: rgb(247, 234, 244);
+    font-family: "Coda", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 150px;
+    padding: 15px;
+    background-color: rgb(71, 69, 70);
+    flex-direction: column;
+    
+    border: solid;
+    border-radius:8px;
+}
+
+.calculator .display{
+    display: flex;
+    background-color: rgb(170, 168, 168);
+    height: 150px;
+    width: 500px;
+    border:solid;
+    border-width: 8px;
+    border-color: black;
+    border-radius: 8px;
+}
+
+.calculator .buttons{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 8px;
+    
+
+}
+
+.calculator .board{
+    background-color: black;
+}
+
+.calculator .buttons .operate{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    width: 500px;
+    
+}
+
+
+.calculator .operations{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+button{
+    background-color: rgb(111, 200, 184);
+    height: 120px;
+    width: 125px; 
+}
+
+.clear-btn, .zero-btn{
+    width: 375px;
+}
+
+.calculator .numbers{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
