@@ -18,8 +18,24 @@ function multiply(num1, num2){
 
 //Division
 function divide(num1, num2){
+    if (num2 == 0){
+        alert('You cannot divide by zero!');
+        clearScreen();   
+    }
     let result= num1 / num2;
-    return result;
+    if (Number.isInteger(result)){
+        return result;
+    }
+    else{
+        let resultdps= result.toString().split('.')[1].length;
+        if (resultdps > 8){
+            return result.toFixed(5);
+        }
+        else{
+            return result;
+        }
+    }
+
 }
 
 //Declaring Variables
@@ -31,6 +47,8 @@ const divideOperator='/';
 
 //Operate function
 function operate(firstNumber, operator, secondNumber){
+    firstNumber= Number(firstNumber);
+    secondNumber= Number(secondNumber);
     switch(operator){
         case addOperator:
             return add(firstNumber, secondNumber);
@@ -56,14 +74,66 @@ numberBtns.forEach(button => {
 });
 
 let displayValue='';
+let firstNumber='';
+let operator='';
+let operateStatus= 'ready';
 //Display Numbers on Screen
 function populateDisplay(){
     let outputNum=document.querySelector('.output');
     let number=this.textContent;
+    if (operateStatus == 'done'){
+        clearScreen();
+        operateStatus = 'ready';
+    }
     outputNum.append(number);
-
     displayValue = outputNum.textContent;
     
 }
 
+//Click Operators to Operate
+let operatorBtns=document.querySelectorAll('.operator-btn');
+operatorBtns.forEach(button => {
+    button.addEventListener('click', storeValue);
+})
+
+function storeValue(){
+    operator=this.textContent;
+    firstNumber=displayValue;  
+    clearScreen();
+}
+
+let equalBtn=document.querySelector('.equal-btn');
+    equalBtn.addEventListener('click', function(){
+        let answer = operate(firstNumber, operator, displayValue);
+        console.log(answer);
+        clearScreen();
+        displayResults(answer);
+        isOperating('done');
+})
+
+function displayResults(answer){
+    let outputNum=document.querySelector('.output');
+    let number=answer;
+    outputNum.append(number);
+    displayValue=number;
+}
+
+function isOperating(status){
+    if (status=='done'){
+        operateStatus='done';
+    }
+    else {
+        operateStatus='ready';
+    }
+}
+
+function clearScreen(){
+    let display=document.querySelector('.output');
+    display.innerHTML='';
+    displayValue='';
+
+}
+
+    let clearBtn=document.querySelector('.clear-btn');
+    clearBtn.addEventListener('click', clearScreen);
 

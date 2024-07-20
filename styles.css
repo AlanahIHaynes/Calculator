@@ -36,6 +36,12 @@ body{
 
 .output{
     padding: 6px;
+    height: 150px;
+    width: 500px;
+    display: block;
+    /*breaks long sequences of text*/
+    overflow-wrap:break-word;
+    text-align: end;
 }
 
 
