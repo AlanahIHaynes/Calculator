@@ -142,6 +142,7 @@ function isOperating(status){
     }
 }
 
+//Clears the Display Screen Values
 function clearScreen(){
     let display=document.querySelector('.output');
     display.innerHTML='';
@@ -149,6 +150,14 @@ function clearScreen(){
 
 }
 
-    let clearBtn=document.querySelector('.clear-btn');
-    clearBtn.addEventListener('click', clearScreen);
+//Functionality for Clear Button
+let clearBtn=document.querySelector('.clear-btn');
+clearBtn.addEventListener('click', clearScreen);
 
+//Functionality for Backspace Button
+let backBtn=document.querySelector('.backspace-btn');
+backBtn.addEventListener('click', function(){
+    displayValue = displayValue.slice(0, -1);
+    let outputNum = document.querySelector('.output');
+    outputNum.textContent = displayValue;
+})

@@ -92,9 +92,6 @@ button{
     background-color: rgb(246, 150, 65);
 }
 
-.clear-btn{
-    width: 375px;
-}
 
 .zero-btn{
     display: flex;
@@ -103,9 +100,13 @@ button{
     align-items: center;
 }
 
-.clear-btn{
+.clear-btn, .backspace-btn{
     background-color: rgb(77, 147, 246);
 }
+.clear-btn{
+    width: 250px;
+}
+
 .calculator .numbers{
     display: flex;
     flex-direction: row;
