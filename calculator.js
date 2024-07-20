@@ -28,8 +28,6 @@ const subtractOperator='-';
 const multiplyOperator='*';
 const divideOperator='/';
 
-let firstNumber=0;
-let secondNumber=0;
 
 //Operate function
 function operate(firstNumber, operator, secondNumber){
@@ -51,4 +49,21 @@ function operate(firstNumber, operator, secondNumber){
 
 }
 
-console.log(operate(2, '-', 8));
+//Click Numbers to Display On Screen
+let numberBtns = document.querySelectorAll('.number-btn');
+numberBtns.forEach(button => {
+    button.addEventListener('click', populateDisplay);
+});
+
+let displayValue='';
+//Display Numbers on Screen
+function populateDisplay(){
+    let outputNum=document.querySelector('.output');
+    let number=this.textContent;
+    outputNum.append(number);
+
+    displayValue = outputNum.textContent;
+    
+}
+
+
