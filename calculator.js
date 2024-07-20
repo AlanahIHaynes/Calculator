@@ -77,6 +77,7 @@ let displayValue='';
 let firstNumber='';
 let operator='';
 let operateStatus= 'ready';
+
 //Display Numbers on Screen
 function populateDisplay(){
     let outputNum=document.querySelector('.output');
@@ -85,8 +86,14 @@ function populateDisplay(){
         clearScreen();
         operateStatus = 'ready';
     }
-    outputNum.append(number);
-    displayValue = outputNum.textContent;
+    if (number == '.' && displayValue.includes(number)){
+        /* do nothing */
+    }
+    else {
+        outputNum.append(number);
+        displayValue = outputNum.textContent;
+    }
+    
     
 }
 

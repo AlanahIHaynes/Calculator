@@ -92,8 +92,15 @@ button{
     background-color: rgb(246, 150, 65);
 }
 
-.clear-btn, .zero-btn{
+.clear-btn{
     width: 375px;
+}
+
+.zero-btn{
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
 }
 
 .clear-btn{
