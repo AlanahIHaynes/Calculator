@@ -105,10 +105,15 @@ function storeValue(){
 let equalBtn=document.querySelector('.equal-btn');
     equalBtn.addEventListener('click', function(){
         let answer = operate(firstNumber, operator, displayValue);
-        console.log(answer);
-        clearScreen();
+        if (answer==undefined){
+            /*do Nothing */
+        }
+        else{
+            clearScreen();
         displayResults(answer);
         isOperating('done');
+        }
+        
 })
 
 function displayResults(answer){
@@ -121,6 +126,9 @@ function displayResults(answer){
 function isOperating(status){
     if (status=='done'){
         operateStatus='done';
+        /*Handle cases where user does not specify an operation
+         and hits the equal sign*/
+        operator='';
     }
     else {
         operateStatus='ready';
