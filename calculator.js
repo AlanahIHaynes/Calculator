@@ -154,7 +154,7 @@ clearBtn.addEventListener('click', clearScreen);
 
 //Functionality for Backspace Button
 let backBtn=document.querySelector('.backspace-btn');
-backBtn.addEventListener('click', backspace());
+backBtn.addEventListener('click', backspace);
 function backspace(){
     outputNum.textContent = outputNum.textContent.toString().slice(0, -1);
 }
