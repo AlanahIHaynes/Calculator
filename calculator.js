@@ -52,7 +52,6 @@ function operate(displayValue){
     let firstNumber= Number(displayValue[0]);
     let secondNumber= Number(displayValue[2]);
     let operator = displayValue[1];
-    console.log(firstNumber, operator, secondNumber);
     switch(operator){
         case addOperator:
             return add(firstNumber, secondNumber);
@@ -110,18 +109,21 @@ function storeValue(){
 }
 
 let equalBtn=document.querySelector('.equal-btn');
-    equalBtn.addEventListener('click', function(){
-        let answer = operate(outputNum.textContent);
-        if (answer==undefined){
+equalBtn.addEventListener('click', equate);
+
+//function to calculate answer after =
+function equate(){
+    let answer = operate(outputNum.textContent);
+    if (answer==undefined){
             /*do Nothing */
-        }
-        else{
-            clearScreen();
+    }
+    else{
+        clearScreen();
         displayResults(answer);
         isOperating('done');
         }
         
-})
+}
 
 function displayResults(answer){
     let number=answer;
@@ -152,6 +154,27 @@ clearBtn.addEventListener('click', clearScreen);
 
 //Functionality for Backspace Button
 let backBtn=document.querySelector('.backspace-btn');
-backBtn.addEventListener('click', function(){
+backBtn.addEventListener('click', backspace());
+function backspace(){
     outputNum.textContent = outputNum.textContent.toString().slice(0, -1);
+}
+
+
+//Functionality for Keyboard Input
+document.addEventListener('keydown', function(event){
+    let key = event.key;
+    if (key >= '0' && key <= '9' || key == '.'){
+        outputNum.textContent += `${key}`;
+    }
+    if (['+', '-', '*', '/'].includes(key)){
+        outputNum.textContent += ` ${key} `;
+    }
+
+    if (key == '=' || key == 'Enter'){
+        equate();
+    }
+
+    if (key == 'Backspace'){
+        backspace();
+    }
 })
