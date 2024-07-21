@@ -46,9 +46,13 @@ const divideOperator='/';
 
 
 //Operate function
-function operate(firstNumber, operator, secondNumber){
-    firstNumber= Number(firstNumber);
-    secondNumber= Number(secondNumber);
+function operate(displayValue){
+    displayValue = displayValue.toString();
+    displayValue = displayValue.split(' ');
+    let firstNumber= Number(displayValue[0]);
+    let secondNumber= Number(displayValue[2]);
+    let operator = displayValue[1];
+    console.log(firstNumber, operator, secondNumber);
     switch(operator){
         case addOperator:
             return add(firstNumber, secondNumber);
@@ -73,14 +77,13 @@ numberBtns.forEach(button => {
     button.addEventListener('click', populateDisplay);
 });
 
+//Declare Global Variables
 let displayValue='';
-let firstNumber='';
-let operator='';
 let operateStatus= 'ready';
+let outputNum=document.querySelector('.output');
 
 //Display Numbers on Screen
 function populateDisplay(){
-    let outputNum=document.querySelector('.output');
     let number=this.textContent;
     if (operateStatus == 'done'){
         clearScreen();
@@ -91,10 +94,7 @@ function populateDisplay(){
     }
     else {
         outputNum.append(number);
-        displayValue = outputNum.textContent;
-    }
-    
-    
+    }   
 }
 
 //Click Operators to Operate
@@ -104,14 +104,14 @@ operatorBtns.forEach(button => {
 })
 
 function storeValue(){
-    operator=this.textContent;
-    firstNumber=displayValue;  
-    clearScreen();
+    let operator=this.textContent;  
+    outputNum.textContent += ` ${operator} `;
+    isOperating('ready');
 }
 
 let equalBtn=document.querySelector('.equal-btn');
     equalBtn.addEventListener('click', function(){
-        let answer = operate(firstNumber, operator, displayValue);
+        let answer = operate(outputNum.textContent);
         if (answer==undefined){
             /*do Nothing */
         }
@@ -124,10 +124,8 @@ let equalBtn=document.querySelector('.equal-btn');
 })
 
 function displayResults(answer){
-    let outputNum=document.querySelector('.output');
     let number=answer;
-    outputNum.append(number);
-    displayValue=number;
+    outputNum.textContent += `${number}`;
 }
 
 function isOperating(status){
@@ -135,7 +133,7 @@ function isOperating(status){
         operateStatus='done';
         /*Handle cases where user does not specify an operation
          and hits the equal sign*/
-        operator='';
+        /*operator='';*/
     }
     else {
         operateStatus='ready';
@@ -144,9 +142,7 @@ function isOperating(status){
 
 //Clears the Display Screen Values
 function clearScreen(){
-    let display=document.querySelector('.output');
-    display.innerHTML='';
-    displayValue='';
+    outputNum.innerHTML='';
 
 }
 
@@ -157,7 +153,5 @@ clearBtn.addEventListener('click', clearScreen);
 //Functionality for Backspace Button
 let backBtn=document.querySelector('.backspace-btn');
 backBtn.addEventListener('click', function(){
-    displayValue = displayValue.slice(0, -1);
-    let outputNum = document.querySelector('.output');
-    outputNum.textContent = displayValue;
+    outputNum.textContent = outputNum.textContent.toString().slice(0, -1);
 })
